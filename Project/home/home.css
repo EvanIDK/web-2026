@@ -1,0 +1,21 @@
+.sidebar {  
+    width: 72px;
+    height: 1080px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    background-color: #fff;
+    border-right: 1px solid rgba(34,34,34,0.05);
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 40px;
+}
+
+.sidebar__icon {
+    position: relative;
+    left: 16px;  
+    width: 40px;
+    height: 40px;
+}
