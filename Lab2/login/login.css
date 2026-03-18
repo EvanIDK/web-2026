@@ -1,0 +1,106 @@
+.login-page {
+    width: 1440px;
+    height: 1024px; 
+    display: flex;
+    flex-direction: row;
+    gap: 107px;
+}
+
+.intro {
+    margin-top: 182.37px;
+    margin-left: 179px;
+    display: flex;
+    flex-direction: column;
+}
+
+.intro__text {
+    font: 700 140px/180px "Golos Text";
+    color: #222222;
+    width: 385px;
+    height: 180px;
+    margin: 0;
+    letter-spacing: -1.5px;
+    margin-bottom: -100px;
+    z-index: 2;
+}
+
+.intro__picture {
+    width: 462px;
+    height: 501px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 343px;
+    margin-top: 415px;
+}
+
+.auth-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.auth-form__field-name {
+    font: 400 15px/18px "Golos Text";
+    letter-spacing: -0.15px;     
+    color: #222222;
+}
+
+.auth-form__input {
+    box-sizing: border-box;
+    width: 343px;
+    height: 44px;
+    border-radius: 10px;
+    padding: 13px 12px 13px 12px;
+    background-color: #F2F3F5;
+}
+
+.auth-form__input_password {
+    padding-right: 50px;
+}
+
+.auth-form__input-hide {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.auth-form__label {
+    font: 400 13px/16px "Golos Text";
+    width: 343px;
+    height: 16px;
+    letter-spacing: -0.08px; 
+    color: #808080;
+}
+
+.auth-form__label {
+    font: 400 13px/16px "Golos Text";
+    width: 343px;
+    height: 16px;
+    letter-spacing: -0.08px; 
+    color: #808080;
+}
+
+.auth-form__icon-eye {
+    width: 24px;
+    height: 24px;
+    color: #222222;
+    cursor: pointer;
+    position: absolute;
+    left: 308px;
+}
+
+.auth-form__submit {
+    width: 343px;
+    height: 48px;
+    color: #fff;
+    padding-right: 16px;
+    padding-left: 16px;
+    border-radius: 10px;
+    background-color: #222222;
+    font: 500 16px/100% "Golos Text";
+    letter-spacing: 0%;
+}
