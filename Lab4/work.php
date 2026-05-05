@@ -1,12 +1,13 @@
 <?php
-    function findLeapYear($year): bool {
+    function findLeapYear($year): string {
         if (($year % 4 == 0 && $year % 100 != 0)  || ($year % 400 == 0)) {
-            return true;
+            return 'Да';
         }
         else {
-            return false;
+            return 'Нет';
         }
     }
+
     function digitToWord($number): string {
         switch ($number) {
             case 0: return 'Ноль';
@@ -21,6 +22,7 @@
             case 9: return 'Девять';
         }
     }
+
     function zodiagSign($dates): string {
         $day = (int)($dates[0] . $dates[1]);
         $month = (int)($dates[3] . $dates[4]);
@@ -67,22 +69,41 @@
         $first_three = (int)$Ticket[0] + (int)$Ticket[1] + (int)$Ticket[2];
         $second_three = (int)$Ticket[3] + (int)$Ticket[4] + (int)$Ticket[5];
         if ($first_three == $second_three) {
-            return $Ticket . '<br>';
-        }
+            return (string)$Ticket . '<br>';
+        } 
+        return ' ';
     }
+
+    function factorialOfNumber($NumberFactorial): int {
+        $Number = (int)$NumberFactorial;
+        if ($Number <= 1) {
+            return 1;
+        }
+        return $Number * factorialOfNumber($Number - 1);
+        }
 
     if (isset($_POST['leap_year'])) {
         $LeapYear = (int)$_POST['leap_year'];
-        if (findLeapYear($LeapYear) == true) {
-            echo 'Yes';
+        if ($LeapYear >= 30000) {
+            echo 'Переполнение';
         }
         else {
-            echo 'No';
+            if (findLeapYear($LeapYear) == true) {
+                echo 'Yes';
+            }
+            else {
+                echo 'No';
+            }
         }
     }
    if (isset($_POST['number_to_string'])) {
         $NumberToString = (int)$_POST['number_to_string'];
-        echo digitToWord($NumberToString);
+        if ($NumberToString >= 10) {
+            echo 'Введите только 1 цифру';
+        }
+        else {
+            echo digitToWord($NumberToString);
+        }
    }
     if (isset($_POST['zodiag_sign'])) {
         $ZodiagSign = $_POST['zodiag_sign'];
@@ -91,10 +112,19 @@
     if (isset($_POST['task4'])) {
         $StartTicket = (int)$_POST['start_ticket'];
         $EndTicket = (int)$_POST['end_ticket'];
-        for ($StartTicket; $StartTicket <= $EndTicket; ++$StartTicket) {
-            $OneOfTickets = $StartTicket;
-            if (luckyTicket($OneOfTickets)) echo luckyTicket($OneOfTickets); 
+        if ($StartTicket <= $EndTicket) {
+            for ($StartTicket; $StartTicket <= $EndTicket; ++$StartTicket) {
+                $OneOfTickets = $StartTicket;
+                if (luckyTicket($OneOfTickets)) echo luckyTicket($OneOfTickets); 
+            }
         }
+        else {
+            echo 'Неправильный ввод';
+        }
+    }
+    if(isset($_POST['factorial_of_number'])) {
+        $Num = (int)$_POST['factorial_of_number'];
+        echo factorialOfNumber($Num);
     }
 
 ?>
