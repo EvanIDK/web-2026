@@ -1,17 +1,9 @@
 <?php
 $postId = (int)$_GET['id'];
 
-$post = [
-    'id' => 1,
-    'author_name' => 'Ваня Денисов',
-    'author_avatar' => './pictures/VanyaDenisov.png',
-    'img_modifier' => './pictures/FirstPhoto_post.png',
-    'image_alt' => 'Зима',
-    'image_count' => '1/3',
-    'subtitle' => 'Так красиво сегодня на улице! Настоящая зима))',
-    'likes' => 203,
-    'date' => mktime(0, 0, 0, 12, 12, 2024),
-];
+require_once 'database.php'; 
+$connection = connectDatabase();
+$post = findPostInDataBase($connection, $postId);
 ?>
 
 <!DOCTYPE html>
@@ -41,8 +33,8 @@ $post = [
             </div>
 
             <div class="post__image-container">
-                <img class="post__image" src="<?= $post['img_modifier'] ?>" alt="<?= $post['image_alt'] ?>">
-                <span class="post__image-counter"><?= $post['image_count'] ?></span>
+                <img class="post__image" src="<?= $post['image'] ?>" alt="<?= $post['image_alt'] ?>">
+                <span class="post__image-counter"><?= $post['image_count'] ?? ''?></span>
             </div>
 
             <div class="post__footer">
@@ -50,7 +42,10 @@ $post = [
                 <div class="post__caption">
                     <?= $post['subtitle'] ?>
                 </div>
-                <span class="post__time"><?= date('d.m.Y H:i', $post['date']) ?></span>
+                <span class="post__time">
+                    <?= date('d.m.Y H:i', strtotime($post['posted_at'])) ?>
+                </span>
+
             </div>
         </article>
 

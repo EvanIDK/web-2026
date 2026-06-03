@@ -1,26 +1,9 @@
 <?php
-$posts = [
-    [
-        'id' => 1,
-        'title' => 'Ваня Денисов',
-        'subtitle' => 'Так красиво сегодня на улице! Настоящая зима)) Вспоминается Бродский: «Поздно ночью, в уснувшей долине, на самом дне, в гор...',
-        'img_modifier' => './pictures/FirstPhoto_post.png',
-        'author' => './pictures/VanyaDenisov.png',
-        'image_alt' => 'Зима',
-        'likes' => '203',
-        'date' => mktime(0, 0, 0, 12, 12, 2024),
-    ],
-    [
-        'id' => 2,
-        'title' => 'Лиза Дёмина',
-        'subtitle' => 'Весна',
-        'img_modifier' => './pictures/SecondPhoto_post.png',
-        'author' => './pictures/Liza_Diemina.png',
-        'image_alt' => 'Цветы',
-        'likes' => '111',
-        'date' => mktime(0, 0, 0, 3, 5, 2025),
-    ],
-];
+
+require_once 'database.php';
+
+$connection = connectDatabase();
+$posts = getAllPosts($connection);
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +24,7 @@ $posts = [
         </nav>
         <main class="content">
             <?php foreach ($posts as $post) {
-                include '../post_preview.php';
+                include 'post_preview.php';
             } ?>
         </main>
     </body>
