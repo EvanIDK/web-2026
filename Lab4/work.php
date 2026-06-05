@@ -24,12 +24,71 @@
     }
 
     function zodiagSign($dates): string {
-        $day = (int)($dates[0] . $dates[1]);
-        $month = (int)($dates[3] . $dates[4]);
+        if ($dates[2] == '.') {
+            $day = (int)($dates[0] . $dates[1]);
+            $month = (int)($dates[3] . $dates[4]);
+        }
+        else if ($dates[4] == '-') {   
+            $day = (int)($dates[8] . $dates[9]);
+            $month = (int)($dates[5] . $dates[6]);
+        }
+        else if ($dates[2] == '/') {   
+            $day = (int)($dates[3] . $dates[4]);
+            $month = (int)($dates[0] . $dates[1]);
+        }
+        else if ($dates[2] == '-' && $dates[6] == '-') {
+            $day = (int)($dates[0] . $dates[1]);
+            $mStr = $dates[3] . $dates[4] . $dates[5];
+            if ($mStr == 'Jan') $month = 1; else
+            if ($mStr == 'Feb') $month = 2; else
+            if ($mStr == 'Mar') $month = 3; else
+            if ($mStr == 'Apr') $month = 4; else
+            if ($mStr == 'May') $month = 5; else
+            if ($mStr == 'Jun') $month = 6; else
+            if ($mStr == 'Jul') $month = 7; else
+            if ($mStr == 'Aug') $month = 8; else
+            if ($mStr == 'Sep') $month = 9; else
+            if ($mStr == 'Oct') $month = 10; else
+            if ($mStr == 'Nov') $month = 11; else
+            if ($mStr == 'Dec') $month = 12; else
+            return 'Неверный формат';
+        }
+        else if ($dates[1] == ' ' || $dates[2] == ' ') {
+            if ($dates[1] == ' ') {
+                $day = (int)$dates[0];
+                $monthIndex = 2;
+            } else {
+                $day = (int)($dates[0] . $dates[1]);
+                $monthIndex = 3;
+            }
+            
+            $monthStr = '';
+            for ($i = $monthIndex; isset($dates[$i]) && $dates[$i] != ' '; $i++) {
+                $monthStr = $monthStr . $dates[$i];
+            }
+            
+            if ($monthStr == 'января')   $month = 1; else
+            if ($monthStr == 'февраля')  $month = 2; else
+            if ($monthStr == 'марта')    $month = 3; else
+            if ($monthStr == 'апреля')   $month = 4; else
+            if ($monthStr == 'мая')      $month = 5; else
+            if ($monthStr == 'июня')     $month = 6; else
+            if ($monthStr == 'июля')     $month = 7; else 
+            if ($monthStr == 'августа')  $month = 8; else
+            if ($monthStr == 'сентября') $month = 9; else
+            if ($monthStr == 'октября')  $month = 10; else
+            if ($monthStr == 'ноября')   $month = 11; else
+            if ($monthStr == 'декабря')  $month = 12; else
+            return 'Неверный формат';
+        }
+        else {
+            return 'Неверный формат';    
+        }
+
             if (($month == 3 && $day >= 21) || ($month == 4 && $day <= 19)) {
                 return 'Овен';
             }
-            if (($month == 4 && $day >= 20) || ($month == 5 && $day <= 22)) {
+            if (($month == 4 && $day >= 20) || ($month == 5 && $day <= 20)) {
                 return 'Телец';
             }
             if (($month == 5 && $day >= 21) || ($month == 6 && $day <= 21)) {
@@ -53,13 +112,13 @@
             if (($month == 11 && $day >= 22) || ($month == 12 && $day <= 21)) {
                 return 'Стрелец';
             }
-            if (($month == 12 && $day >= 22) || ($month == 1 && $day <= 20)) {
+            if (($month == 12 && $day >= 22) || ($month == 1 && $day <= 19)) {
                 return 'Козерог';
             }
-            if (($month == 1 && $day >= 21) || ($month == 2 && $day <= 20)) {
+            if (($month == 1 && $day >= 20) || ($month == 2 && $day <= 18)) {
                 return 'Водолей';
             }
-            if (($month == 2 && $day >= 21) || ($month == 3 && $day <= 20)) {
+            if (($month == 2 && $day >= 19) || ($month == 3 && $day <= 20)) {
                 return 'Рыбы';
             }
     }
