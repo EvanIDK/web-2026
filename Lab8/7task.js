@@ -29,7 +29,7 @@ function generatePassword(length) {
 
     mustBeCh.sort(() => (Math.random() - 0.5));
 
-    let password = mustBeCh.join("")
+    let password = mustBeCh.join('')
 
     console.log("Сгенерированный пароль: " + password);
     return password;
