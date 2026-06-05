@@ -2,6 +2,7 @@ CREATE TABLE user (
     id INT UNSIGNED AUTO_INCREMENT,
     username VARCHAR(200) NOT NULL,
     avatar VARCHAR(255) NOT NULL,
+    description TEXT,
     PRIMARY KEY (id)
 );
 
@@ -12,5 +13,13 @@ CREATE TABLE post (
     subtitle VARCHAR(200),
     likes INT UNSIGNED NOT NULL DEFAULT 0,
     posted_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE post_images (
+    id INT UNSIGNED AUTO_INCREMENT,
+    post_id INT UNSIGNED NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    position INT UNSIGNED NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
 );

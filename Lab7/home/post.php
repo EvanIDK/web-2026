@@ -1,7 +1,8 @@
 <?php
 $postId = (int)$_GET['id'];
 
-require_once 'database.php'; 
+require_once 'database.php';
+ 
 $connection = connectDatabase();
 $post = findPostInDataBase($connection, $postId);
 ?>

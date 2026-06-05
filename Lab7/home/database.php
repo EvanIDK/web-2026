@@ -48,3 +48,18 @@ function findPostInDataBase(PDO $connection, int $id): ?array
     $row = $statement->fetch(PDO::FETCH_ASSOC);
     return $row ?: null;
 }
+
+function getPostImages(PDO $connection, int $postId): array
+{
+    $query = <<<SQL
+        SELECT image, position
+        FROM post_images
+        WHERE post_id = $postId
+        ORDER BY position ASC
+        SQL;
+
+    $statement = $connection->query($query);
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// добавить 3 табиичуц для слайдера и описание юзера
