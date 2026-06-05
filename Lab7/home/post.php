@@ -5,6 +5,12 @@ require_once 'database.php';
  
 $connection = connectDatabase();
 $post = findPostInDataBase($connection, $postId);
+
+if (!$post) {
+    http_response_code(404);
+    echo "Ошибка 404: Пост не найден";
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
