@@ -1,7 +1,5 @@
 <?php
 
-header('Content-Type: application/json');
-
 require_once 'database.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -44,7 +42,6 @@ if ($image['error'] !== UPLOAD_ERR_OK) {
     exit;
 }
 
-
 $imagesDir = 'pictures';
 
 if (!is_dir($imagesDir)) {
@@ -52,7 +49,7 @@ if (!is_dir($imagesDir)) {
 }
 
 $fileName = time() . '_' . basename($image['name']);
-$filePath = './' . $imagesDir . '/' . $fileName; // Сохраняем в базу вид: ./pictures/12345_photo.png
+$filePath = './' . $imagesDir . '/' . $fileName;
 
 if (!move_uploaded_file($image['tmp_name'], $filePath)) {
     http_response_code(500);
